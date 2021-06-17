@@ -1,7 +1,7 @@
 const data = require("./airports-data");
-data.forEach((airport) => {
+listProperties = (airport) => {
   const { attributes } = airport;
-  const {
+  return ({
     name,
     city,
     country,
@@ -11,17 +11,9 @@ data.forEach((airport) => {
     longitude,
     altitude,
     timezone,
-  } = attributes;
-  console.log({
-    name,
-    city,
-    country,
-    iata,
-    icao,
-    latitude,
-    longitude,
-    altitude,
-    timezone,
-  });
+  } = attributes);
+};
+
+data.forEach((airport) => {
+  console.log(listProperties(airport));
 });
-// console.log(data);
