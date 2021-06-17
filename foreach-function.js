@@ -25,9 +25,11 @@ const iterateObject = (list, callback) => {
   }
 };
 
-forEach(data, (item, index, data) => {
-  console.log(item);
-});
+module.exports = forEach;
+
+// forEach(data, (item, index, data) => {
+//   console.log(item);
+// });
 
 /*
 const obj = {

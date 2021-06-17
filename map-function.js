@@ -1,10 +1,10 @@
 const data = require("./airports-data");
+const forEach = require("./foreach-function");
 // Implement map function which takes 2 arguments
 // 1. list -> array
 // 2. callback function
 
 const map = (list, callback) => {
-  // array
   if (!Array.isArray(list)) {
     throw new TypeError(`list should be an array.`);
   }
@@ -13,9 +13,9 @@ const map = (list, callback) => {
 
 const iterateArray = (list, callback) => {
   const arr = [];
-  for (let i = 0; i < list.length; i++) {
-    arr.push(callback(list[i], i, list));
-  }
+  forEach(list, (val, i, list) => {
+    arr.push(callback(val, i, list));
+  });
   return arr;
 };
 
@@ -23,21 +23,21 @@ const iterateArray = (list, callback) => {
 
 // times 2
 // let numbers = [1, 4, 9];
-// let doubles = map(numbers, (item, i, data) => {
+// let doubles = map(numbers, (item, i, numbers) => {
 //   return item * 2;
 // });
 // console.log(doubles);
 
 // times 3
 // let numbers = [1, 4, 9];
-// let tribles = map(numbers, (item, i, data) => {
+// let tribles = map(numbers, (item, i, numbers) => {
 //   return item * 3;
 // });
 // console.log(tribles);
 
 // squares
 let numbers = [1, 2, 3, 4, 5];
-let squares = map(numbers, (item, i, data) => {
+let squares = map(numbers, (item, i, numbers) => {
   return item * item;
 });
 console.log(squares);
