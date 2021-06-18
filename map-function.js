@@ -19,6 +19,8 @@ const iterateArray = (list, callback) => {
   return arr;
 };
 
+module.exports = map;
+
 // test cases
 
 // times 2
@@ -36,11 +38,11 @@ const iterateArray = (list, callback) => {
 // console.log(tribles);
 
 // squares
-let numbers = [1, 2, 3, 4, 5];
-let squares = map(numbers, (item, i, numbers) => {
-  return item * item;
-});
-console.log(squares);
+// let numbers = [1, 2, 3, 4, 5];
+// let squares = map(numbers, (item, i, numbers) => {
+//   return item * item;
+// });
+// console.log(squares);
 
 // try to pass object
 // const obj = {
