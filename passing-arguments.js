@@ -1,4 +1,4 @@
-// functional-style if..else
+// https://slides.com/bgando/f2f-final-day-2#/1/7
 const ifElse = (condition, isTrue, isFalse, ...args) => {
   return condition ? isTrue(...args) : isFalse(args);
 };
