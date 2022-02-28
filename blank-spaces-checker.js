@@ -1,12 +1,17 @@
-const hasBlankSpaces = (txt) => {
-  return /^\s*$/.test(txt);
+// const hasBlankSpaces = (txt) => {
+const isBlank = (txt) => {
+  const regex = /^\s+$/;
+  return regex.test(txt);
 };
 
 let txt = "   ";
-console.log(hasBlankSpaces(txt));
-
-txt = "the lazy dog";
-console.log(hasBlankSpaces(txt));
+console.log(isBlank(txt));
 
 txt = "     ";
-console.log(hasBlankSpaces(txt));
+console.log(isBlank(txt));
+
+txt = " ";
+console.log(isBlank(txt));
+
+txt = "the lazy dog";
+console.log(isBlank(txt));
