@@ -1,53 +1,122 @@
+const fs = require("fs");
+
 const originalNames = [
-  "01-egghead-web-security-course-overview-B1cxW0bGL.mp4",
-  "02-egghead-simulate-session-hijacking-attacks-and-inspect-network-traffic-with-charles-proxy-S1l35_eM8.mp4",
-  "03-egghead-add-https-to-a-localhost-express-app-to-prevent-mitm-attacks-HkqH2OO-I.mp4",
-  "04-egghead-redirect-all-http-traffic-to-https-in-express-to-ensure-all-responses-are-secure-HJ76PhZzL.mp4",
-  "05-egghead-set-the-secure-cookie-flag-to-ensure-cookies-are-only-sent-over-secure-connections-rJArd2WGL.mp4",
-  "06-egghead-add-hsts-headers-to-express-apps-to-ensure-all-requests-are-secure-SJvit2-MU.mp4",
-  "07-egghead-create-a-proof-of-concept-exploit-of-a-csrf-vulnerable-website-rk5WshbGI.mp4",
-  "08-egghead-mitigate-csrf-attacks-by-setting-the-samesite-cookie-flag-in-express-BkCSh3-GI.mp4",
-  "09-egghead-add-csrf-token-middleware-to-an-express-server-to-mitigate-csrf-ryjsMAWfL.mp4",
-  "10-egghead-make-an-xss-payload-to-read-a-cookie-from-a-vulnerable-website-H188A2bGL.mp4",
-  "11-egghead-set-the-httponly-cookie-flag-in-express-to-ensure-cookies-are-inaccessible-from-javascript-S1R6J6-GI.mp4",
-  "12-egghead-make-an-xss-payload-to-read-document-body-from-a-vulnerable-website-rJsy-T-ML.mp4",
-  "13-egghead-prepare-a-vulnerable-website-for-csp-enforcement-with-report-only-csp-headers-in-express-HJk-fpZzL.mp4",
-  "14-egghead-add-a-script-src-csp-header-in-express-to-block-inline-scripts-and-eval-Bk99XTWzI.mp4",
-  "15-egghead-read-document-content-from-a-vulnerable-website-via-script-tag-injection-in-an-xss-payload-Syt8_6ZMI.mp4",
-  "16-egghead-prompt-users-for-credentials-from-a-vulnerable-website-via-iframe-injection-BJBUAaWfI.mp4",
-  "17-egghead-add-a-default-src-csp-header-in-express-to-enforce-an-allowlist-and-mitigate-xss-B1mfyAWGI.mp4",
+  "lesson153",
+  "lesson154",
+  "lesson155",
+  "lesson156",
+  "lesson157",
+  "lesson158",
+  "lesson159",
+  "lesson160",
+  "lesson161",
+  "lesson162",
+  "lesson163",
+  "lesson164",
+  "lesson165",
+  "lesson166",
+  "lesson167",
+  "lesson168",
+  "lesson169",
+  "lesson170",
+  "lesson171",
+  "lesson172",
+  "lesson173",
+  "lesson174",
+  "lesson175",
+  "lesson176",
+  "lesson177",
+  "lesson178",
+  "lesson179",
+  "lesson180",
+  "lesson181",
+  "lesson182",
+  "lesson183",
+  "lesson184",
+  "lesson185",
+  "lesson186",
+  "lesson187",
+  "lesson188",
+  "lesson189",
+  "lesson190",
+  "lesson191",
+  "lesson192",
+  "lesson193",
+  "lesson194",
+  "lesson195",
 ];
 
 const repalceNames = [
-  "01 Course Overview Web Security Essentials",
-  "02 Simulate Man in the Middle Attacks and Inspect Network Traffic with Charles Proxy",
-  "03 Add https to a Localhost Express App to Prevent MITM Attacks",
-  "04 Redirect All HTTP Traffic to HTTPS in Express to Ensure All Responses are Secure",
-  "05 Set the Secure Cookie Flag to Ensure Cookies are Only Sent Over Secure Connections",
-  "06 Add HSTS Headers to Express Apps to Ensure All Requests are https Requests",
-  "07 Create a Proof of Concept Exploit of a CSRF Vulnerable Website",
-  "08 Mitigate CSRF Attacks by Setting the SameSite Cookie Flag in Express",
-  "09 Add CSRF Token Middleware to an Express Server to Mitigate CSRF",
-  "10 Make an XSS Payload to Read a Cookie from a Vulnerable Website",
-  "11 Set the httpOnly Cookie Flag in Express to Ensure Cookies are Inaccessible from JavaScript",
-  "12 Make an XSS Payload to Read document.body from a Vulnerable Website",
-  "13 Prevent Inline Script Execution by Implementing Script-Src CSP Headers in Express",
-  "14 Read Document Content from a Vulnerable Website via Script Tag Injection in an XSS Payload",
-  "15 Add a Nonce Based script-src Header in Express to Only Allow Scripts that Match the Nonce",
-  "16 Prompt Users for Credentials from a Vulnerable Website via iframe Injection",
-  "17 Add a default-src CSP Header in Express to Enforce an Allowlist and Mitigate XSS",
+  "153 Testing React Apps Welcome",
+  "154 Simple Test with ReactDOM",
+  "155 Render Counter Component Solution 1",
+  "156 Test Counter Component Solution 2",
+  "157 Increment and Decrement Buttons Solution 3",
+  "158 Cleaning up Test Environments Solution 4",
+  "159 Add use dispatchEvent Extra Credit Solution 1",
+  "160 Simple Test with React Testing Library",
+  "161 Rendering Solution 1",
+  "162 Firing Events Solution 2",
+  "163 Accretions Extra Credit Solution 1",
+  "164 Avoid Implementation Details",
+  "165 Screen Utility Solution",
+  "166 Browser Interactions  Extra Credit Solution 1",
+  "167 Form Testing",
+  "168 Exposes a Debug Method to Test Elements Solution 1",
+  "169 Jest Mock Solution 2",
+  "170 Abstract Variables Extra Credit Solution 1",
+  "171 Jest Mock Functions Extra Credit Solution 2",
+  "172 Generate Test Data Extra Credit Solution 3",
+  "173 Allow for Overrides Extra Credit Solution 4",
+  "174 Mocking HTTP Requests",
+  "175 Mock Service Worker Solution 1",
+  "176 Mocked Responses Solution 2",
+  "177 Reuse Server Request Handlers Extra Credit Solution 1",
+  "178 Unhappy Path Extra Credit Solution 2",
+  "179 Use Inline Snapshots Extra Credit Solution 3",
+  "180 Use One-off Server Handlers Extra Credit Solution 4",
+  "181 Mocking Browser APIs and Modules",
+  "182 Mock Geolocation Solution 1",
+  "183 Act Function Solution 2",
+  "184 Mock the module Extra Credit Solution 1",
+  "185 Context and Custom Render Method",
+  "186 Wrapper Component Solution",
+  "187 Dark Theme Extra Credit Solution 1",
+  "188 Render Method Extra Credit Solution 2",
+  "189 App Test Utils Extra Credit Solution 3",
+  "190 Testing Custom Hooks",
+  "191 Test Functionality of Custom Hook Solution",
+  "192 Fake Component Extra Credit Solution 1",
+  "193 Setup Function Extra Credit Solution 2",
+  "194 Using React-Hooks Testing Library Extra Credit Solution 3",
+  "195 Testing React Apps Outro",
 ];
 
-for (let i = 0; i < 17; i++) {
+let textToSave = ``;
+const len = originalNames.length;
+for (let i = 0; i < len; i++) {
+  textToSave += `get-childitem *.mp4 | foreach { rename-item $_ $_.Name.Replace("${originalNames[i]}", "${repalceNames[i]}") }\n`;
   console.log(
     `get-childitem *.mp4 | foreach { rename-item $_ $_.Name.Replace("${originalNames[i]}", "${repalceNames[i]}") }`
   );
 }
+console.log(textToSave);
 
-//
-/*
-[
-  "01-egghead-web-security-course-overview-B1cxW0bGL",
-  "01 Course Overview Web Security Essentials"
-];
-*/
+fs.writeFile("new-names.txt", textToSave, function (err) {
+  if (err) throw err;
+  console.log("Saved!");
+});
+
+// const lessonNames = [];
+
+// for (let i = 153; i < 196; i++) {
+//   lessonNames.push(`lesson${i}`);
+// }
+
+// console.log(lessonNames);
+
+const numberedLessons = [];
+for (let i = 0, j = 153; i < target.length, j < 196; i++, j++) {
+  numberedLessons.push(`${j} ${target[i]}`);
+}
+console.log(numberedLessons);
