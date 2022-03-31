@@ -1,26 +1,40 @@
+const reducer = require("./reducer");
+
 function createStore(reducer) {
-  let state; // = { classId: 1 }; //= {};
+  let state;
+  let listeners = [];
+
+  function subscribe(listener) {
+    listeners.push(listener);
+  }
 
   function getState() {
     return state;
   }
 
   function dispatch(action) {
-    // state = { ...state, ...overrides };
     state = reducer(state, action);
+
+    for (let listener of listeners) {
+      listener();
+    }
   }
 
   return {
     getState,
     dispatch,
-    // setState,
-    // subscribe,
-    // getState,
-    // replaceReducer,
+    subscribe,
   };
 }
 
-const store = createStore();
+module.exports = createStore(reducer);
+
+// setState,
+// subscribe,
+// getState,
+// replaceReducer,
+
+/*
 // store.setState(10);
 // let result = store.getState();
 // console.log(result);

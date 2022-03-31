@@ -22,3 +22,5 @@ function reducer(state = [], action) {
 //   return state.filter((bug) => bug.id !== action.payload.id);
 // }
 // return state;
+
+module.exports = reducer;
