@@ -1,16 +1,13 @@
-function createStore() {
-  let state = { classId: 1 }; //= {};
-
-  //   function setState(val) {
-  //     state = val;
-  //   }
+function createStore(reducer) {
+  let state; // = { classId: 1 }; //= {};
 
   function getState() {
     return state;
   }
 
-  function dispatch(overrides) {
-    state = { ...state, ...overrides };
+  function dispatch(action) {
+    // state = { ...state, ...overrides };
+    state = reducer(state, action);
   }
 
   return {
